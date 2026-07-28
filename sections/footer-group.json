@@ -1,0 +1,38 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "cross-page-promos": {
+      "type": "cross-page-promos",
+      "blocks": {
+        "shipping": {"type": "icon", "settings": {"icon": "truck", "text": "Free shipping over $100", "link_url": "shopify://pages/free-shipping"}},
+        "returns": {"type": "icon", "settings": {"icon": "check_mark", "text": "Easy domestic returns", "link_url": "shopify://policies/refund-policy"}},
+        "impact": {"type": "icon", "settings": {"icon": "heart", "text": "$5 impact from every item", "link_url": "shopify://pages/philanthropy"}}
+      },
+      "block_order": ["shipping", "returns", "impact"],
+      "settings": {"cross_page_promo_bg": "#f4efe5", "cross_page_promo_color": "#181818", "show_on_home_page": true}
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "text",
+          "settings": {
+            "title": "One Under Par",
+            "text": "<p>Modern golf headwear inspired by tradition, built with personality, and designed around progress—not perfection.</p><p><a href=\"/pages/philanthropy\">Every product creates impact.</a></p>",
+            "image": "{{ shop.brand.logo }}",
+            "image_width": 120,
+            "show_social_icons": true,
+            "soc_icons_large": false,
+            "enable_follow_on_shop": true
+          }
+        },
+        "links": {"type": "menu", "settings": {"title": "Explore", "menu": "footer", "link_layout": "columns"}},
+        "newsletter": {"type": "newsletter", "settings": {"title": "Join the club", "text": "<p>First access to new drops, original stories, and events.</p>", "button_style": "primary", "show_social_icons": false, "soc_icons_large": false}}
+      },
+      "block_order": ["brand", "links", "newsletter"],
+      "settings": {"lower_menu": "footer", "show_powered_by": false, "show_payment_icons": true, "enable_country_selector": false, "enable_language_selector": false}
+    }
+  },
+  "order": ["cross-page-promos", "footer"]
+}

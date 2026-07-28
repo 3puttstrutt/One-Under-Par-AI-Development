@@ -1,0 +1,109 @@
+{% liquid
+  assign product_handle = product.handle | downcase
+  assign product_title = product.title | downcase
+  assign fit_title = 'The versatile golf fit'
+  assign fit_copy = 'A balanced silhouette designed for the course, clubhouse, and everyday rotation.'
+  assign construction_title = 'Distinctive by design'
+  assign construction_copy = 'Intentional embroidery, considered proportions, and details that give the hat personality without making it disposable.'
+  assign use_title = 'Built for repeat wear'
+  assign use_copy = 'Comfortable enough for a full round and polished enough to keep on after the final putt.'
+  assign fit_badge = 'VERSATILE PROFILE'
+
+  if product_handle contains 'performance' or product_title contains 'performance'
+    assign fit_title = 'Made for warm rounds'
+    assign fit_copy = 'Lightweight, breathable construction helps manage long days, desert heat, and active play.'
+    assign construction_title = 'Clean performance shape'
+    assign construction_copy = 'A structured athletic silhouette keeps its form while maintaining a modern, course-ready appearance.'
+    assign use_title = 'Best for active golfers'
+    assign use_copy = 'Choose this style when ventilation, low weight, and dependable shape matter most.'
+    assign fit_badge = 'PERFORMANCE FIT'
+  elsif product_handle contains 'vintage' or product_handle contains 'patch' or product_title contains 'vintage'
+    assign fit_title = 'Modern construction. Vintage character.'
+    assign fit_copy = 'A heritage-inspired profile with enough structure to showcase the patch while still feeling approachable and wearable.'
+    assign construction_title = 'The details lead'
+    assign construction_copy = 'Texture, embroidery, and period-inspired color create the collected look of a favorite clubhouse hat.'
+    assign use_title = 'Best for statement styling'
+    assign use_copy = 'An easy choice when you want the hat to carry more personality without becoming costume-like.'
+    assign fit_badge = 'VINTAGE-INSPIRED'
+  elsif product_handle contains 'gimmie' or product_handle contains 'sub-par' or product_title contains 'gimmie' or product_title contains 'sub par'
+    assign fit_title = 'Golf humor, properly executed'
+    assign fit_copy = 'A confident silhouette gives the phrase room to land while keeping the overall look refined.'
+    assign construction_title = 'Conversation without clutter'
+    assign construction_copy = 'The design is direct, recognizable, and built for golfers who know exactly what it means.'
+    assign use_title = 'Best for personality'
+    assign use_copy = 'Wear it for casual rounds, golf trips, league nights, and the moments when the game should still be fun.'
+    assign fit_badge = 'STATEMENT STYLE'
+  elsif product_handle contains 'golden' or product_title contains 'golden boy'
+    assign fit_title = 'A signature One Under Par piece'
+    assign fit_copy = 'The profile is designed to frame the Golden Boy mark and give it the presence of a lasting club emblem.'
+    assign construction_title = 'Heritage without imitation'
+    assign construction_copy = 'Classic visual cues are sharpened with modern proportions and richer embroidery.'
+    assign use_title = 'Best for collectors'
+    assign use_copy = 'A strong starting point for anyone building a recognizable One Under Par rotation.'
+    assign fit_badge = 'SIGNATURE DESIGN'
+  elsif product_handle contains 'classic' or product_title contains 'classic'
+    assign fit_title = 'The dependable everyday profile'
+    assign fit_copy = 'Balanced crown height and a familiar golf silhouette make this an easy first One Under Par hat.'
+    assign construction_title = 'Quiet confidence'
+    assign construction_copy = 'Clean branding and purposeful details make it versatile enough to pair with almost anything.'
+    assign use_title = 'Best for daily rotation'
+    assign use_copy = 'A foundational choice for the course, travel, errands, and everything between rounds.'
+    assign fit_badge = 'CLASSIC FIT'
+  elsif product_handle contains 'pvc' or product_title contains 'pvc'
+    assign fit_title = 'A modern emblem profile'
+    assign fit_copy = 'The structured front gives the dimensional PVC mark a crisp, contemporary presentation.'
+    assign construction_title = 'Texture that holds up'
+    assign construction_copy = 'The emblem adds depth and durability while keeping the overall design clean and athletic.'
+    assign use_title = 'Best for modern styling'
+    assign use_copy = 'Choose it when you want a sharper technical look that still feels rooted in golf.'
+    assign fit_badge = 'MODERN STRUCTURE'
+  endif
+
+  assign current_variant = product.selected_or_first_available_variant
+  assign inventory_qty = current_variant.inventory_quantity | default: 0
+%}
+
+<section class="oup-product-proof" aria-label="Product fit and purchase details">
+  <div class="opp-intro">
+    <div>
+      <p class="opp-kicker">WHY THIS ONE</p>
+      <h2>{{ fit_title }}</h2>
+    </div>
+    <div class="opp-intro__copy">
+      <p>{{ fit_copy }}</p>
+      <span class="opp-badge">{{ fit_badge }}</span>
+      {% if current_variant.available and current_variant.inventory_management and inventory_qty > 0 and inventory_qty <= 12 %}
+        <span class="opp-stock">Only {{ inventory_qty }} currently available</span>
+      {% elsif current_variant.available %}
+        <span class="opp-stock opp-stock--ready">Ready to join your rotation</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="opp-grid">
+    <div><span>01</span><h3>{{ construction_title }}</h3><p>{{ construction_copy }}</p></div>
+    <div><span>02</span><h3>{{ use_title }}</h3><p>{{ use_copy }}</p></div>
+    <div><span>03</span><h3>Every product creates impact</h3><p>$5 from this item supports One Under Par’s philanthropic initiatives benefiting Phoenix Children’s.</p></div>
+  </div>
+
+  <div class="opp-confidence">
+    <div><strong>Free domestic shipping</strong><span>On orders over $100</span></div>
+    <div><strong>Easy domestic returns</strong><span>A straightforward process if the fit is not right</span></div>
+    <div><strong>Secure Shopify checkout</strong><span>Trusted payment and transaction protection</span></div>
+  </div>
+
+  <div class="opp-faq">
+    <div><p class="opp-kicker">BEFORE YOU ADD TO CART</p><h2>Know what you are choosing.</h2><p>Small differences in profile, structure, and material determine which hat becomes the one you reach for most.</p></div>
+    <div>
+      <details open><summary>How should this hat fit?</summary><p>{{ fit_copy }} Adjustable closures provide flexibility, but crown profile and structure determine the overall look and feel.</p></details>
+      <details><summary>What is the difference between structured and unstructured?</summary><p>Structured hats hold a defined crown shape. Unstructured hats sit more naturally, soften with wear, and create a relaxed vintage appearance.</p></details>
+      <details><summary>How does the $5 commitment work?</summary><p>One Under Par contributes $5 for every item purchased to support philanthropic initiatives benefiting Phoenix Children’s. It is funded by One Under Par and is not added to your price.</p></details>
+      <details><summary>What if the fit is not right?</summary><p>Domestic returns are designed to be simple. Full eligibility and timing are listed in the return policy linked in the footer.</p></details>
+    </div>
+  </div>
+</section>
+
+<style>
+.oup-product-proof{--wine:#8f1425;--ink:#181818;--cream:#f4efe5;max-width:1440px;margin:0 auto;padding:75px 5vw 110px;color:var(--ink)}.opp-kicker{margin:0 0 14px;font-size:12px;font-weight:850;letter-spacing:.17em}.opp-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:8vw;align-items:end;margin-bottom:52px}.opp-intro h2,.opp-faq h2{margin:0;font-size:clamp(36px,4.5vw,64px);line-height:1.02;letter-spacing:-.04em}.opp-intro__copy>p{font-size:19px;line-height:1.65;margin:0 0 22px}.opp-badge,.opp-stock{display:inline-flex;margin:0 8px 8px 0;padding:8px 11px;font-size:10px;font-weight:850;letter-spacing:.12em;border:1px solid var(--ink)}.opp-stock{background:var(--wine);border-color:var(--wine);color:#fff}.opp-stock--ready{background:var(--cream);border-color:var(--cream);color:var(--ink)}.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink)}.opp-grid>div{padding:34px;border-right:1px solid var(--ink);min-height:300px;display:flex;flex-direction:column}.opp-grid>div:last-child{border-right:0}.opp-grid span{font-size:12px;font-weight:850;letter-spacing:.14em}.opp-grid h3{font-size:23px;line-height:1.2;margin:auto 0 12px}.opp-grid p{margin:0;line-height:1.6}.opp-confidence{display:grid;grid-template-columns:repeat(3,1fr);background:var(--wine);color:#fff}.opp-confidence>div{padding:23px 30px;border-right:1px solid rgba(255,255,255,.28)}.opp-confidence>div:last-child{border-right:0}.opp-confidence strong,.opp-confidence span{display:block}.opp-confidence strong{font-size:14px}.opp-confidence span{margin-top:4px;font-size:11px;opacity:.8}.opp-faq{margin-top:95px;display:grid;grid-template-columns:.9fr 1.1fr;gap:9vw}.opp-faq>div:first-child>p:last-child{font-size:17px;line-height:1.65}.opp-faq details{padding:22px 0;border-top:1px solid var(--ink)}.opp-faq details:last-child{border-bottom:1px solid var(--ink)}.opp-faq summary{font-weight:850;cursor:pointer;font-size:17px}.opp-faq details p{line-height:1.65;padding-right:25px}@media(max-width:800px){.oup-product-proof{padding:55px 20px 80px}.opp-intro,.opp-grid,.opp-confidence,.opp-faq{grid-template-columns:1fr}.opp-intro{gap:25px}.opp-grid>div{border-right:0;border-bottom:1px solid var(--ink);min-height:230px}.opp-grid>div:last-child{border-bottom:0}.opp-grid h3{margin-top:45px}.opp-confidence>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.28)}.opp-confidence>div:last-child{border-bottom:0}.opp-faq{margin-top:65px;gap:30px}}
+</style>
+{% schema %}{"name":"OUP product confidence","settings":[],"presets":[{"name":"OUP product confidence"}]}{% endschema %}

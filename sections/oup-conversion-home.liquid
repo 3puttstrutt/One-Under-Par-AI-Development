@@ -1,0 +1,174 @@
+{% liquid
+  assign hero_product = all_products['keep-this-one-under-classic-5-panel-cap']
+  assign featured_handles = 'gimmie-navy-blue-on-white-5-panel-cap,desert-performance-hat-in-light-green,off-white-sub-par-cap,keep-this-one-under-classic-5-panel-cap' | split: ','
+%}
+
+<section class="oup-home" data-section-id="{{ section.id }}">
+  <div class="oup-hero">
+    <div class="oup-hero__content">
+      <p class="oup-eyebrow">MODERN HEADWEAR FOR A VINTAGE SPORT</p>
+      <h1>Golf hats with character.<br>Built to become favorites.</h1>
+      <p class="oup-hero__lead">Distinctive embroidery, considered fits, and course-ready comfort—designed for golfers who respect the game without taking themselves too seriously.</p>
+      <div class="oup-actions">
+        <a class="oup-btn oup-btn--primary" href="/collections/all">Shop all hats</a>
+        <a class="oup-btn oup-btn--secondary" href="#find-your-fit">Find your fit</a>
+      </div>
+      <div class="oup-hero__proof" aria-label="Store benefits">
+        <span>Free shipping over $100</span>
+        <span>Easy domestic returns</span>
+        <span>$5 per item supports philanthropy</span>
+      </div>
+    </div>
+    <div class="oup-hero__visual">
+      {% if hero_product.featured_image %}
+        <a href="{{ hero_product.url }}" aria-label="Shop {{ hero_product.title | escape }}">
+          {{ hero_product.featured_image | image_url: width: 1400 | image_tag: loading: 'eager', widths: '600,900,1200,1400', sizes: '(min-width: 900px) 50vw, 100vw', alt: hero_product.title }}
+        </a>
+      {% else %}
+        <div class="oup-placeholder">ONE UNDER PAR</div>
+      {% endif %}
+      <div class="oup-hero__badge"><strong>$5</strong><span>from every item purchased supports our philanthropic initiatives</span></div>
+    </div>
+  </div>
+
+  <div class="oup-trustbar">
+    <div><strong>Designed for the game</strong><span>Performance, comfort, and personality</span></div>
+    <div><strong>Details worth noticing</strong><span>Premium embroidery and intentional finishes</span></div>
+    <div><strong>Purchase with purpose</strong><span>Every product creates measurable impact</span></div>
+  </div>
+
+  <div class="oup-wrap" id="find-your-fit">
+    <header class="oup-section-head">
+      <p class="oup-eyebrow">START HERE</p>
+      <h2>Choose the hat that fits your game</h2>
+      <p>Skip the endless scrolling. Shop by the way you wear it.</p>
+    </header>
+    <div class="oup-paths">
+      <a href="/collections/mens-hats" class="oup-path"><span class="oup-path__num">01</span><h3>Classic golf</h3><p>Timeless silhouettes, curved bills, and elevated embroidery.</p><b>Shop classic styles →</b></a>
+      <a href="/collections/all" class="oup-path"><span class="oup-path__num">02</span><h3>Performance</h3><p>Lightweight, breathable options for warm rounds and long days.</p><b>Shop performance hats →</b></a>
+      <a href="/collections/all" class="oup-path"><span class="oup-path__num">03</span><h3>Statement pieces</h3><p>Patch, rope, and personality-forward designs that start conversations.</p><b>Shop statement hats →</b></a>
+      <a href="/collections/womens-hats" class="oup-path"><span class="oup-path__num">04</span><h3>For her</h3><p>Thoughtful proportions, confident color, and golf-first style.</p><b>Shop women’s hats →</b></a>
+    </div>
+  </div>
+
+  <div class="oup-featured">
+    <div class="oup-wrap">
+      <header class="oup-section-head oup-section-head--row">
+        <div><p class="oup-eyebrow">THE FIRST FOUR</p><h2>Start with a standout</h2></div>
+        <a href="/collections/all">View every hat →</a>
+      </header>
+      <div class="oup-products">
+        {% for product_handle in featured_handles %}
+          {% assign featured_product = all_products[product_handle] %}
+          {% if featured_product != blank %}
+            <article class="oup-product-card">
+              <a class="oup-product-card__image" href="{{ featured_product.url }}">
+                {% if featured_product.featured_image %}
+                  {{ featured_product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '360,540,720,800', sizes: '(min-width: 1000px) 25vw, (min-width: 600px) 50vw, 100vw', alt: featured_product.title }}
+                {% endif %}
+                {% unless featured_product.available %}<span class="oup-label">Sold out</span>{% endunless %}
+              </a>
+              <div class="oup-product-card__meta">
+                <div><h3><a href="{{ featured_product.url }}">{{ featured_product.title }}</a></h3><p>{{ featured_product.price | money }}</p></div>
+                <a class="oup-card-link" href="{{ featured_product.url }}" aria-label="View {{ featured_product.title | escape }}">View →</a>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="oup-wrap oup-story">
+    <div class="oup-story__statement">
+      <p class="oup-eyebrow">WHY ONE UNDER PAR</p>
+      <h2>The best golf style feels earned, not manufactured.</h2>
+      <p>We combine the visual language of vintage golf with modern construction and a sharper point of view. The result is headwear that looks at home on the first tee, at the clubhouse, and everywhere after.</p>
+      <a class="oup-text-link" href="/pages/philanthropy">Read what drives us →</a>
+    </div>
+    <div class="oup-values">
+      <div><span>01</span><h3>Intentional design</h3><p>Each mark, color, and placement is chosen to feel distinctive without becoming disposable.</p></div>
+      <div><span>02</span><h3>Wearable confidence</h3><p>Our hats are made to finish an outfit—not overpower it.</p></div>
+      <div><span>03</span><h3>Progress over perfection</h3><p>Golf gives us another shot. The brand celebrates showing up, learning, and going again.</p></div>
+    </div>
+  </div>
+
+  <div class="oup-fit-guide">
+    <div class="oup-wrap">
+      <header class="oup-section-head"><p class="oup-eyebrow">THE FIT GUIDE</p><h2>Know what you like before you click</h2></header>
+      <div class="oup-fit-grid">
+        <div><strong>Low profile</strong><p>A closer, more relaxed fit with a softer crown. Great for an understated, broken-in look.</p></div>
+        <div><strong>Mid profile</strong><p>The versatile middle ground: enough structure to hold shape without feeling tall.</p></div>
+        <div><strong>Structured</strong><p>A defined front panel and polished silhouette for logos and patches with more presence.</p></div>
+        <div><strong>Unstructured</strong><p>Soft, casual, and easy to wear—ideal for vintage-inspired and everyday styles.</p></div>
+      </div>
+      <div class="oup-center"><a class="oup-btn oup-btn--primary" href="/collections/all">Explore every fit</a></div>
+    </div>
+  </div>
+
+  <div class="oup-impact">
+    <div class="oup-impact__mark">
+      <img src="{{ 'Benefiting-Phoenix-Childrens_Color.png' | file_img_url: '600x' }}" alt="Benefiting Phoenix Children's" loading="lazy">
+    </div>
+    <div class="oup-impact__copy">
+      <p class="oup-eyebrow">PHILANTHROPY FIRST</p>
+      <h2>Every product creates impact.</h2>
+      <p>For every item purchased, One Under Par contributes $5 to support our philanthropic initiatives benefiting Phoenix Children’s. A hat is a small thing. Enough small things, done consistently, can create something meaningful.</p>
+      <a class="oup-btn oup-btn--light" href="/pages/philanthropy">See our commitment</a>
+    </div>
+  </div>
+
+  <div class="oup-wrap oup-assurance">
+    <header class="oup-section-head"><p class="oup-eyebrow">BUY WITH CONFIDENCE</p><h2>Everything you need. Nothing in the way.</h2></header>
+    <div class="oup-assurance__grid">
+      <div><span>✓</span><h3>Clear product details</h3><p>Fit, shape, materials, and construction are presented before purchase.</p></div>
+      <div><span>✓</span><h3>Easy domestic returns</h3><p>A straightforward return process if the hat is not right for you.</p></div>
+      <div><span>✓</span><h3>Secure checkout</h3><p>Trusted payment options and Shopify-powered transaction security.</p></div>
+      <div><span>✓</span><h3>Real customer feedback</h3><p>Verified ratings and reviews are displayed as they are collected.</p></div>
+    </div>
+  </div>
+
+  <div class="oup-faq">
+    <div class="oup-wrap oup-faq__inner">
+      <div><p class="oup-eyebrow">QUESTIONS, ANSWERED</p><h2>Good decisions come from good information.</h2></div>
+      <div class="oup-faq__items">
+        <details><summary>How do I choose the right hat profile?</summary><p>Low-profile and unstructured hats sit closer to the head and feel more relaxed. Mid-profile and structured hats hold their shape and create a more defined silhouette. Product pages identify the intended fit whenever available.</p></details>
+        <details><summary>When does my order qualify for free shipping?</summary><p>Domestic orders of $100 or more qualify for free shipping. Your cart will show progress toward that threshold.</p></details>
+        <details><summary>How does the $5 philanthropy commitment work?</summary><p>One Under Par contributes $5 for every item purchased to support our philanthropic initiatives benefiting Phoenix Children’s. It is part of the purchase—not an optional customer add-on.</p></details>
+        <details><summary>What happens if my hat does not work for me?</summary><p>We offer free and easy domestic returns according to our return policy. Visit the return-policy link in the footer for the full terms.</p></details>
+      </div>
+    </div>
+  </div>
+
+  <div class="oup-email">
+    <div class="oup-email__copy"><p class="oup-eyebrow">JOIN THE CLUB</p><h2>First access to new drops, stories, and events.</h2><p>No noise. Just the things worth opening.</p></div>
+    {% form 'customer', class: 'oup-email__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter,homepage-funnel">
+      <label class="visually-hidden" for="OupEmail-{{ section.id }}">Email address</label>
+      <input id="OupEmail-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" placeholder="Email address" required autocomplete="email">
+      <button type="submit">Join now</button>
+      {% if form.posted_successfully? %}<p class="oup-form-msg">You’re in. Watch your inbox.</p>{% endif %}
+      {% if form.errors %}<div class="oup-form-msg">{{ form.errors | default_errors }}</div>{% endif %}
+    {% endform %}
+  </div>
+
+  <div class="oup-final">
+    <p class="oup-eyebrow">YOUR NEXT FAVORITE HAT IS HERE</p>
+    <h2>Respect the game. Keep your personality.</h2>
+    <a class="oup-btn oup-btn--light" href="/collections/all">Shop One Under Par</a>
+  </div>
+</section>
+
+<style>
+  .oup-home{--wine:#8f1425;--ink:#181818;--cream:#f4efe5;--sand:#ded0b5;--line:#dedede;color:var(--ink);font-size:16px;line-height:1.55}.oup-home *{box-sizing:border-box}.oup-wrap{max-width:1440px;margin:0 auto;padding:100px 5vw}.oup-eyebrow{margin:0 0 18px;font-size:12px;font-weight:800;letter-spacing:.18em}.oup-home h1,.oup-home h2,.oup-home h3{margin-top:0;color:inherit}.oup-home h1{font-size:clamp(44px,6vw,88px);line-height:.98;letter-spacing:-.045em;margin-bottom:28px}.oup-home h2{font-size:clamp(34px,4vw,60px);line-height:1.04;letter-spacing:-.035em;margin-bottom:20px}.oup-home h3{font-size:21px;line-height:1.2}.oup-hero{min-height:760px;display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}.oup-hero__content{padding:110px 6vw 80px;display:flex;flex-direction:column;justify-content:center}.oup-hero__lead{font-size:20px;max-width:680px;margin:0 0 34px}.oup-actions{display:flex;gap:12px;flex-wrap:wrap}.oup-btn{display:inline-flex;min-height:52px;padding:14px 24px;align-items:center;justify-content:center;text-decoration:none!important;font-size:14px;font-weight:800;letter-spacing:.04em;border:1px solid var(--ink);transition:.2s ease}.oup-btn--primary{background:var(--ink);color:#fff!important}.oup-btn--secondary{background:transparent;color:var(--ink)!important}.oup-btn--light{background:#fff;color:var(--ink)!important;border-color:#fff}.oup-btn:hover{transform:translateY(-2px);opacity:.9}.oup-hero__proof{display:flex;gap:18px;flex-wrap:wrap;margin-top:42px;font-size:12px;font-weight:700}.oup-hero__proof span:before{content:'✓';margin-right:7px;color:var(--wine)}.oup-hero__visual{position:relative;min-height:620px;background:#e7e2d9;overflow:hidden}.oup-hero__visual>a,.oup-hero__visual img{width:100%;height:100%;display:block}.oup-hero__visual img{object-fit:cover}.oup-placeholder{height:100%;display:grid;place-items:center;font-size:50px;font-weight:900;letter-spacing:.08em}.oup-hero__badge{position:absolute;right:24px;bottom:24px;width:245px;padding:22px;background:var(--wine);color:#fff;display:flex;gap:14px;align-items:center}.oup-hero__badge strong{font-size:34px}.oup-hero__badge span{font-size:11px;line-height:1.35}.oup-trustbar{display:grid;grid-template-columns:repeat(3,1fr);background:var(--wine);color:#fff}.oup-trustbar div{padding:24px 4vw;border-right:1px solid rgba(255,255,255,.24)}.oup-trustbar strong,.oup-trustbar span{display:block}.oup-trustbar strong{font-size:15px}.oup-trustbar span{font-size:12px;opacity:.8;margin-top:4px}.oup-section-head{max-width:850px;margin-bottom:48px}.oup-section-head>p:last-child{font-size:18px}.oup-section-head--row{max-width:none;display:flex;justify-content:space-between;align-items:flex-end}.oup-section-head--row>a,.oup-text-link{color:inherit;font-weight:800;text-decoration:none;border-bottom:1px solid}.oup-paths{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}.oup-path{min-height:320px;padding:30px;display:flex;flex-direction:column;color:inherit!important;text-decoration:none!important;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transition:.2s}.oup-path:hover{background:var(--cream);transform:translateY(-5px)}.oup-path__num{font-size:12px;font-weight:800;margin-bottom:auto}.oup-path p{margin:0 0 22px}.oup-path b{font-size:13px}.oup-featured{background:#f7f7f7}.oup-products{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}.oup-product-card__image{position:relative;display:block;aspect-ratio:1/1.12;background:#eee;overflow:hidden}.oup-product-card__image img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.oup-product-card:hover img{transform:scale(1.025)}.oup-label{position:absolute;top:12px;left:12px;background:#fff;padding:7px 10px;font-size:11px;font-weight:800}.oup-product-card__meta{display:flex;justify-content:space-between;gap:15px;padding-top:16px}.oup-product-card__meta h3{font-size:16px;margin-bottom:6px}.oup-product-card__meta h3 a{color:inherit;text-decoration:none}.oup-product-card__meta p{margin:0;font-weight:700}.oup-card-link{color:inherit;text-decoration:none;font-weight:800;white-space:nowrap}.oup-story{display:grid;grid-template-columns:1.15fr 1fr;gap:9vw}.oup-story__statement>p:not(.oup-eyebrow){font-size:20px}.oup-values>div{padding:25px 0;border-top:1px solid var(--ink);display:grid;grid-template-columns:45px 1fr;column-gap:15px}.oup-values span{font-size:12px;font-weight:800}.oup-values h3,.oup-values p{grid-column:2;margin-bottom:8px}.oup-values p{margin-top:0}.oup-fit-guide{background:var(--cream)}.oup-fit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink)}.oup-fit-grid>div{background:var(--cream);padding:32px;min-height:220px}.oup-fit-grid strong{font-size:20px}.oup-center{text-align:center;margin-top:42px}.oup-impact{display:grid;grid-template-columns:1fr 1.25fr;background:var(--wine);color:#fff}.oup-impact__mark{min-height:500px;background:#fff;display:grid;place-items:center;padding:60px}.oup-impact__mark img{max-width:80%;height:auto}.oup-impact__copy{padding:80px 7vw;display:flex;flex-direction:column;justify-content:center}.oup-impact__copy p:not(.oup-eyebrow){font-size:19px;max-width:700px}.oup-impact__copy .oup-btn{align-self:flex-start;margin-top:18px}.oup-assurance__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}.oup-assurance__grid span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--wine);color:#fff;margin-bottom:24px}.oup-faq{background:#f5f5f5}.oup-faq__inner{display:grid;grid-template-columns:1fr 1.2fr;gap:9vw}.oup-faq details{border-top:1px solid var(--ink);padding:22px 0}.oup-faq details:last-child{border-bottom:1px solid var(--ink)}.oup-faq summary{cursor:pointer;font-weight:800;font-size:17px}.oup-faq details p{padding-right:30px}.oup-email{display:grid;grid-template-columns:1fr 1fr;gap:5vw;padding:70px 7vw;background:var(--sand);align-items:center}.oup-email h2{font-size:clamp(32px,4vw,54px)}.oup-email__form{display:grid;grid-template-columns:1fr auto;position:relative}.oup-email__form input{height:58px;border:1px solid var(--ink);padding:0 18px;background:#fff;font-size:16px}.oup-email__form button{height:58px;border:1px solid var(--ink);background:var(--ink);color:#fff;padding:0 25px;font-weight:800}.oup-form-msg{grid-column:1/-1}.oup-final{text-align:center;padding:110px 5vw;background:var(--ink);color:#fff}.oup-final h2{max-width:900px;margin-left:auto;margin-right:auto}.oup-final .oup-btn{margin-top:22px}
+  @media(max-width:1000px){.oup-hero{grid-template-columns:1fr}.oup-hero__content{padding-top:80px}.oup-hero__visual{min-height:560px}.oup-paths,.oup-products,.oup-fit-grid,.oup-assurance__grid{grid-template-columns:repeat(2,1fr)}.oup-story,.oup-impact,.oup-faq__inner,.oup-email{grid-template-columns:1fr}.oup-impact__mark{min-height:340px}.oup-email{gap:25px}.oup-trustbar{grid-template-columns:1fr}.oup-trustbar div{border-right:0;border-bottom:1px solid rgba(255,255,255,.24)}}
+  @media(max-width:600px){.oup-wrap{padding:70px 20px}.oup-hero__content{padding:65px 20px}.oup-hero__visual{min-height:430px}.oup-hero__badge{right:12px;bottom:12px;width:215px}.oup-paths,.oup-products,.oup-fit-grid,.oup-assurance__grid{grid-template-columns:1fr}.oup-path{min-height:250px}.oup-section-head--row{display:block}.oup-section-head--row>a{display:inline-block;margin-top:10px}.oup-impact__copy{padding:65px 20px}.oup-email{padding:60px 20px}.oup-email__form{grid-template-columns:1fr}.oup-email__form button{width:100%}.oup-final{padding:80px 20px}.oup-home h1{font-size:45px}}
+</style>
+
+{% schema %}
+{
+  "name": "OUP conversion homepage",
+  "settings": [],
+  "presets": [{"name": "OUP conversion homepage"}]
+}
+{% endschema %}

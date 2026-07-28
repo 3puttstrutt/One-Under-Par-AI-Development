@@ -1,0 +1,42 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": {{ shop.url | append: '/#organization' | json }},
+  "name": "One Under Par",
+  "alternateName": "One Under",
+  "url": {{ shop.url | json }},
+  "email": "info@oneunder.com",
+  "description": "Premium vintage-inspired golf hats with purpose. Every item purchased generates a $5 philanthropic contribution.",
+  {%- if section.settings.logo %}
+  "logo": {{ section.settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
+  {%- endif %}
+  "sameAs": [
+    {%- assign first_social = true -%}
+    {%- assign social_urls = settings.social_facebook_url | append: '|' | append: settings.social_instagram_url | append: '|' | append: settings.social_pinterest_url | append: '|' | append: settings.social_tiktok_url | append: '|' | append: settings.social_youtube_url | append: '|' | append: settings.social_linkedin_url | split: '|' -%}
+    {%- for social_url in social_urls -%}
+      {%- if social_url != blank -%}{%- unless first_social -%},{%- endunless -%}{{ social_url | json }}{%- assign first_social = false -%}{%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {%- assign potential_action_target = shop.url | append: routes.search_url | append: '?q={search_term_string}' -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": {{ shop.url | append: '/#website' | json }},
+    "name": "One Under Par",
+    "alternateName": "One Under",
+    "url": {{ shop.url | json }},
+    "publisher": { "@id": {{ shop.url | append: '/#organization' | json }} },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": {{ potential_action_target | json }} },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+{%- endif -%}

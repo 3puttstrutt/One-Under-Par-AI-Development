@@ -1,0 +1,74 @@
+{%- liquid
+  assign oup_brand_name = 'One Under Par'
+  assign oup_title = page_title | strip
+  assign oup_description = page_description | strip_html | strip
+
+  if request.page_type == 'index'
+    assign oup_title = 'Premium Golf Hats with Purpose | One Under Par'
+    assign oup_description = 'Shop premium vintage-inspired golf hats for men and women. Every item purchased generates a $5 philanthropic contribution.'
+  elsif request.page_type == 'product'
+    if oup_description == blank
+      assign oup_description = product.description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
+    endif
+    if oup_description == blank
+      assign oup_description = 'Shop ' | append: product.title | append: ' by One Under Par. Premium golf headwear with vintage character, modern comfort, and a $5 philanthropic contribution from every item.'
+    endif
+  elsif request.page_type == 'collection'
+    if oup_description == blank
+      assign oup_description = collection.description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
+    endif
+    if oup_description == blank
+      assign oup_description = 'Shop ' | append: collection.title | append: ' from One Under Par—premium golf hats with vintage style, modern comfort, and purpose behind every purchase.'
+    endif
+  elsif request.page_type == 'article'
+    if oup_description == blank
+      assign oup_description = article.excerpt_or_content | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
+    endif
+  elsif request.page_type == 'page'
+    if oup_description == blank
+      assign oup_description = page.content | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
+    endif
+  endif
+
+  if oup_description == blank
+    assign oup_description = 'One Under Par creates premium vintage-inspired golf hats with purpose. Every item purchased generates a $5 philanthropic contribution.'
+  endif
+-%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>
+  {%- if request.page_type == 'password' -%}
+    {{- oup_brand_name -}}
+  {%- else -%}
+    {{- oup_title -}}
+    {%- if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless oup_title contains oup_brand_name %} | {{ oup_brand_name }}{% endunless -%}
+  {%- endif -%}
+</title>
+<meta name="description" content="{{ oup_description | escape }}">
+<meta name="author" content="One Under Par">
+<meta name="theme-color" content="#8f1425">
+
+{%- if template contains 'search' or template contains 'cart' or template contains 'customers' or request.page_type == '404' or request.page_type == 'password' -%}
+  <meta name="robots" content="noindex,follow">
+{%- else -%}
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+{%- endif -%}
+
+{%- if canonical_url != blank -%}
+  <link rel="canonical" href="{{ canonical_url }}">
+{%- endif -%}
+
+{%- if settings.favicon != blank -%}
+  {%- liquid
+    assign image_type = settings.favicon | split: '?' | first | split: '.' | last | downcase
+    if image_type == 'svg'
+      assign image_type = 'svg+xml'
+    endif
+  -%}
+  <link rel="icon" href="{{ settings.favicon | image_url: width: 48, height: 48 }}" type="image/{{ image_type }}">
+  <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+{%- endif -%}
+
+{%- render 'oup-structured-breadcrumbs' -%}

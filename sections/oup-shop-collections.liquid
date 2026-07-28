@@ -1,0 +1,55 @@
+{% liquid
+  assign collection_handles = 'performance-hats,unstructured-dad-hats,5-panel-hats,path-hats,ladies-collection,flatbill-hats' | split: ','
+%}
+<section class="oup-shop-collections" id="find-your-fit" aria-labelledby="OupCollectionsTitle-{{ section.id }}">
+  <div class="osc-head">
+    <div>
+      <p>SHOP BY SHAPE AND PURPOSE</p>
+      <h2 id="OupCollectionsTitle-{{ section.id }}">Start with the way you wear it.</h2>
+    </div>
+    <div class="osc-intro">
+      <p>Performance for hot rounds. Unstructured for an easy, broken-in feel. Five-panel and flatbill silhouettes for a sharper profile. Patch and women’s collections for more personality.</p>
+      <a href="/collections/all">View every hat →</a>
+    </div>
+  </div>
+
+  <div class="osc-grid">
+    {% for collection_handle in collection_handles %}
+      {% assign featured_collection = collections[collection_handle] %}
+      {% if featured_collection != blank %}
+        <a class="osc-card osc-card--{{ forloop.index }}" href="{{ featured_collection.url }}">
+          <div class="osc-card__image">
+            {% if featured_collection.image %}
+              {{ featured_collection.image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '420,640,900,1200', sizes: '(min-width: 1100px) 33vw, (min-width: 700px) 50vw, 100vw', alt: featured_collection.title }}
+            {% elsif featured_collection.products.first.featured_image %}
+              {{ featured_collection.products.first.featured_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '420,640,900,1200', sizes: '(min-width: 1100px) 33vw, (min-width: 700px) 50vw, 100vw', alt: featured_collection.title }}
+            {% endif %}
+            <span>{{ featured_collection.products_count }} styles</span>
+          </div>
+          <div class="osc-card__copy">
+            <div>
+              <small>0{{ forloop.index }}</small>
+              <h3>{{ featured_collection.title }}</h3>
+            </div>
+            <b>Shop collection →</b>
+          </div>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="osc-guide">
+    <div><strong>Relaxed</strong><span>Choose unstructured or dad hats.</span></div>
+    <div><strong>Balanced</strong><span>Choose a five-panel or classic curved bill.</span></div>
+    <div><strong>Course-ready</strong><span>Choose lightweight performance construction.</span></div>
+    <div><strong>More presence</strong><span>Choose patch, flatbill, or statement embroidery.</span></div>
+  </div>
+</section>
+<style>
+  .oup-home .oup-wrap#find-your-fit{display:none!important}.oup-shop-collections{--ink:#181818;--wine:#8f1425;--cream:#f4efe5;max-width:1500px;margin:0 auto;padding:110px 5vw;color:var(--ink)}.oup-shop-collections *{box-sizing:border-box}.osc-head{display:grid;grid-template-columns:1.15fr .85fr;gap:8vw;align-items:end;margin-bottom:50px}.osc-head>div>p:first-child{margin:0 0 16px;font-size:12px;font-weight:850;letter-spacing:.18em}.osc-head h2{margin:0;font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.045em}.osc-intro p{font-size:18px;line-height:1.65;margin:0 0 18px}.osc-intro a{color:inherit;text-decoration:none;font-weight:850;border-bottom:1px solid}.osc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.osc-card{display:block;color:inherit!important;text-decoration:none!important}.osc-card__image{position:relative;aspect-ratio:1/1.05;overflow:hidden;background:#eee}.osc-card__image img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.osc-card:hover img{transform:scale(1.035)}.osc-card__image span{position:absolute;left:14px;top:14px;padding:7px 10px;background:#fff;font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}.osc-card__copy{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding:18px 2px 8px;border-bottom:1px solid var(--ink)}.osc-card__copy small{display:block;font-size:11px;font-weight:850;letter-spacing:.12em;margin-bottom:5px}.osc-card__copy h3{margin:0;font-size:22px;line-height:1.1}.osc-card__copy b{font-size:12px;white-space:nowrap}.osc-guide{display:grid;grid-template-columns:repeat(4,1fr);margin-top:70px;background:var(--cream);border-top:4px solid var(--wine)}.osc-guide div{padding:24px 26px;border-right:1px solid rgba(24,24,24,.18)}.osc-guide div:last-child{border-right:0}.osc-guide strong,.osc-guide span{display:block}.osc-guide strong{font-size:15px}.osc-guide span{font-size:12px;margin-top:4px;line-height:1.45}
+  @media(max-width:950px){.osc-head{grid-template-columns:1fr;gap:24px}.osc-grid{grid-template-columns:repeat(2,1fr)}.osc-guide{grid-template-columns:repeat(2,1fr)}.osc-guide div:nth-child(2){border-right:0}.osc-guide div{border-bottom:1px solid rgba(24,24,24,.18)}}
+  @media(max-width:620px){.oup-shop-collections{padding:75px 20px}.osc-grid{grid-template-columns:1fr}.osc-card__image{aspect-ratio:1/1}.osc-guide{grid-template-columns:1fr}.osc-guide div{border-right:0}.osc-card__copy h3{font-size:20px}}
+</style>
+{% schema %}
+{"name":"OUP shop collections","settings":[],"presets":[{"name":"OUP shop collections"}]}
+{% endschema %}
