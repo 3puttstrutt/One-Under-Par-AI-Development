@@ -45,8 +45,7 @@
         "media_grouping_option": "Color,Colour,Couleur,Farbe"
       }
     },
-    "confidence": {"type": "oup-product-proof", "settings": {}},
     "related-products": {"type": "related-products", "settings": {"title": "Complete the rotation", "show_vendor": false, "grid": 4}}
   },
-  "order": ["main", "confidence", "related-products"]
+  "order": ["main", "related-products"]
 }

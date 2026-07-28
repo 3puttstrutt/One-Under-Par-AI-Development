@@ -1312,6 +1312,7 @@ const FilterContainer = class extends HTMLElement {
       const isNowVisible = this.classList.contains('filter-container--show-filters-desktop');
       this.section.querySelectorAll('.toggle-btn[data-toggle-filters]').forEach((el) => {
         el.classList.toggle('toggle-btn--revealed-desktop', isNowVisible);
+        el.setAttribute('aria-expanded', isNowVisible ? 'true' : 'false');
       });
     });
   }
@@ -1358,7 +1359,9 @@ const FilterContainer = class extends HTMLElement {
       });
     }
     evt.target.classList.add('layout-switch--active');
+    evt.target.setAttribute('aria-pressed', 'true');
     (evt.target.nextElementSibling || evt.target.previousElementSibling).classList.remove('layout-switch--active');
+    (evt.target.nextElementSibling || evt.target.previousElementSibling).setAttribute('aria-pressed', 'false');
   }
 
   checkStickyScroll() {

@@ -3,11 +3,14 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": {{ shop.url | append: '/#organization' | json }},
-  "name": "One Under Par",
-  "alternateName": "One Under",
+  "name": {{ shop.name | json }},
   "url": {{ shop.url | json }},
-  "email": "info@oneunder.com",
-  "description": "Premium vintage-inspired golf hats with purpose. Every item purchased generates a $5 philanthropic contribution.",
+  {%- if shop.email != blank %}
+  "email": {{ shop.email | json }},
+  {%- endif %}
+  {%- if shop.description != blank %}
+  "description": {{ shop.description | strip_html | strip | json }},
+  {%- endif %}
   {%- if section.settings.logo %}
   "logo": {{ section.settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
   {%- endif %}
@@ -28,8 +31,7 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": {{ shop.url | append: '/#website' | json }},
-    "name": "One Under Par",
-    "alternateName": "One Under",
+    "name": {{ shop.name | json }},
     "url": {{ shop.url | json }},
     "publisher": { "@id": {{ shop.url | append: '/#organization' | json }} },
     "potentialAction": {

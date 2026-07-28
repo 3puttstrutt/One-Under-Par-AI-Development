@@ -1,26 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "editorial_intro": {
       "type": "oup-editorial-intro",
       "settings": {}
     },
-    "lifestyle_sources": {
-      "type": "oup-lifestyle-sources",
-      "settings": {}
-    },
     "shop_collections": {
       "type": "oup-shop-collections",
       "settings": {}
-    },
-    "main": {
-      "type": "oup-conversion-home",
-      "settings": {}
     }
   },
-  "order": ["editorial_intro", "lifestyle_sources", "shop_collections", "main"]
+  "order": ["editorial_intro", "shop_collections"]
 }

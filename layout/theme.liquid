@@ -170,7 +170,9 @@
     {{- settings.custom_html_head -}}
     <!-- CC Custom Head End -->
   {%- endif -%}
-{% include 'pagefly-app-header' %}</head>
+  {% include 'pagefly-app-header' %}
+  {{ 'accessibility.css' | asset_url | stylesheet_tag }}
+</head>
 
 <body class="template-{{ template | split: '.' | first | handle }}
     {%- if template.suffix %} template-suffix-{{ template.suffix }}{% endif -%}
@@ -200,7 +202,7 @@
   {%- endif -%}
 
 
-  <a href="#" class="page-shade" aria-label="{{ 'general.navigation.close' | t }}"></a>
+  <button type="button" class="page-shade" aria-label="{{ 'general.navigation.close' | t }}"></button>
   <div class="overlay fixed top-0 right-0 bottom-0 left-0 js-overlay"></div>
 
   {%- if settings.after_add_to_cart == 'notification' -%}

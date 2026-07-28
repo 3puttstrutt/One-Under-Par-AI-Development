@@ -1,6 +1,19 @@
 <section class="oup-editorial" aria-labelledby="OupEditorialTitle-{{ section.id }}">
   <div class="oup-editorial__hero">
-    <img class="oup-editorial__hero-image" src="{{ 'oup-lifestyle-hero.jpg' | asset_url }}" alt="One Under Par golfer on the course" width="1800" height="1200" loading="eager" fetchpriority="high">
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'oup-editorial__hero-image',
+          widths: '720, 960, 1200, 1600, 2000, 2400',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.hero_image_alt
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'oup-editorial__hero-image placeholder-svg' }}
+    {%- endif -%}
     <div class="oup-editorial__shade"></div>
     <div class="oup-editorial__hero-copy">
       <p class="oup-editorial__eyebrow">ONE UNDER PAR</p>
@@ -30,13 +43,35 @@
       <a href="/pages/about-us">Meet One Under Par →</a>
     </div>
     <figure class="oup-editorial__story-image">
-      <img src="{{ 'oup-lifestyle-story.jpg' | asset_url }}" alt="Golfers sharing an authentic day on the course" width="1200" height="1400" loading="lazy">
+      {%- if section.settings.story_image != blank -%}
+        {{ section.settings.story_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1500, 1800',
+            sizes: '(min-width: 1000px) 50vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.story_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
     </figure>
   </div>
 
   <div class="oup-editorial__gallery" aria-label="One Under Par lifestyle">
     <figure class="oup-editorial__gallery-main">
-      <img src="{{ 'oup-lifestyle-community.jpg' | asset_url }}" alt="One Under Par golf hat worn in a lifestyle setting" width="1200" height="1500" loading="lazy">
+      {%- if section.settings.community_image != blank -%}
+        {{ section.settings.community_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1500, 1800',
+            sizes: '(min-width: 1000px) 55vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.community_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
       <figcaption><span>Made for the round</span><strong>Designed to live well beyond it.</strong></figcaption>
     </figure>
     <div class="oup-editorial__gallery-copy">
@@ -52,7 +87,18 @@
       <a class="oup-editorial__button oup-editorial__button--dark" href="#find-your-fit">Find your fit</a>
     </div>
     <figure class="oup-editorial__gallery-detail">
-      <img src="{{ 'oup-lifestyle-detail.jpg' | asset_url }}" alt="Close lifestyle view of a One Under Par golf hat" width="1000" height="1200" loading="lazy">
+      {%- if section.settings.detail_image != blank -%}
+        {{ section.settings.detail_image
+          | image_url: width: 1600
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1600',
+            sizes: '(min-width: 1000px) 45vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.detail_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
     </figure>
   </div>
 
@@ -74,7 +120,60 @@
 {% schema %}
 {
   "name": "OUP editorial intro",
-  "settings": [],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Editorial imagery"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload brand-approved images to Shopify so responsive image sizes and stable dimensions are generated."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero image alt text",
+      "default": "One Under Par golfer on the course"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story image"
+    },
+    {
+      "type": "text",
+      "id": "story_image_alt",
+      "label": "Story image alt text",
+      "default": "Golfers sharing an authentic day on the course"
+    },
+    {
+      "type": "image_picker",
+      "id": "community_image",
+      "label": "Community image"
+    },
+    {
+      "type": "text",
+      "id": "community_image_alt",
+      "label": "Community image alt text",
+      "default": "One Under Par golf hat worn in a lifestyle setting"
+    },
+    {
+      "type": "image_picker",
+      "id": "detail_image",
+      "label": "Detail image"
+    },
+    {
+      "type": "text",
+      "id": "detail_image_alt",
+      "label": "Detail image alt text",
+      "default": "Close lifestyle view of a One Under Par golf hat"
+    }
+  ],
   "presets": [{"name": "OUP editorial intro"}]
 }
 {% endschema %}

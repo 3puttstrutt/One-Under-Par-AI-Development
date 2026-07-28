@@ -174,14 +174,19 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
     {{- settings.custom_html_head -}}
     <!-- CC Custom Head End -->
   {%- endif -%}
-{% include 'pagefly-app-header' %}</head>
+  {% include 'pagefly-app-header' %}
+  {{ 'accessibility.css' | asset_url | stylesheet_tag }}
+</head>
 
 <body class="template-{{ template | split: '.' | first | handle }}
     {%- if template.suffix %} template-suffix-{{ template.suffix }}{% endif -%}
     {%- if settings.swatch_source == 'native' %} swatch-source-native swatch-method-swatches swatch-style-{{ settings.swatch_style }}
     {%- elsif settings.swatch_source == 'theme' %} swatch-source-theme swatch-method-{{ settings.swatch_method }} swatch-style-{{ settings.swatch_style }}{% endif -%}
     {%- if settings.animations_enabled_desktop %} cc-animate-enabled{% endif -%}
-    "><div class="pagefly-container">
-              {{ content_for_layout }}
-            </div></body>
+    ">
+  <a class="skip-link visually-hidden" href="#content" data-cs-role="skip">{{ 'accessibility.skip_to_content' | t }}</a>
+  <main id="content" class="pagefly-container">
+    {{ content_for_layout }}
+  </main>
+</body>
 </html>
