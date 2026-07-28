@@ -1,0 +1,68 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "<a href=\"/pages/philanthropy\"><strong>$5 FROM EVERY ITEM PURCHASED SUPPORTS OUR PHILANTHROPIC INITIATIVES</strong></a>",
+            "show_countdown": false,
+            "hide_on_end": false,
+            "end_date": "",
+            "end_time": "",
+            "number_font": "base",
+            "countdown_separator": "box",
+            "use_custom_colors": true,
+            "bg_color": "#8f1425",
+            "bg_gradient": "",
+            "text_color": "#FFFFFF"
+          }
+        }
+      },
+      "block_order": ["announcement-1"],
+      "settings": {
+        "message_font_size": 13,
+        "announcement_bar_col": "#8f1425",
+        "announcement_bar_gradient": "",
+        "announcement_text_col": "#FFFFFF",
+        "show_social_icons": false,
+        "menu": "",
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify://shop_images/redman_emblem_2026_72dpi_digital.png",
+        "logo_img_width_int": 100,
+        "mobile_logo_img_width_int": 70,
+        "logo_h1": false,
+        "enable_sticky": true,
+        "enable_transparent": false,
+        "transparent_logo": "",
+        "transparent_color": "#ffffff",
+        "transparent_fade": "#000000",
+        "transparent_fade_strength": 60,
+        "menu_linklist": "main-menu",
+        "menu_layout": "inline-menu-center",
+        "nav_featured_link": "",
+        "menu_linklist_mobile": "",
+        "mobile_expand_with_entire_link": true,
+        "enable_mobile_promo_carousel": true,
+        "enable_nav_mob_products": true,
+        "nav_mob_products_title": "Start with these",
+        "nav_mob_products_collection": "all",
+        "enable_search": true,
+        "search_recommendations_title": "Popular searches",
+        "search_recommendations_menu": "",
+        "icon_strategy": "icons_cart_search",
+        "cart_icon": "cart"
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

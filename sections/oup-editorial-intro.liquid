@@ -1,0 +1,179 @@
+<section class="oup-editorial" aria-labelledby="OupEditorialTitle-{{ section.id }}">
+  <div class="oup-editorial__hero">
+    {%- if section.settings.hero_image != blank -%}
+      {{ section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'oup-editorial__hero-image',
+          widths: '720, 960, 1200, 1600, 2000, 2400',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: section.settings.hero_image_alt
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'oup-editorial__hero-image placeholder-svg' }}
+    {%- endif -%}
+    <div class="oup-editorial__shade"></div>
+    <div class="oup-editorial__hero-copy">
+      <p class="oup-editorial__eyebrow">ONE UNDER PAR</p>
+      <h1 id="OupEditorialTitle-{{ section.id }}">More than a hat.<br>A better way to play.</h1>
+      <p>Premium golf headwear for people who respect the game, value progress, and believe every purchase can create meaningful impact.</p>
+      <div class="oup-editorial__actions">
+        <a class="oup-editorial__button oup-editorial__button--solid" href="{{ routes.all_products_collection_url }}">Shop the collection</a>
+        <a class="oup-editorial__button oup-editorial__button--outline" href="/pages/philanthropy">Discover our purpose</a>
+      </div>
+    </div>
+    <div class="oup-editorial__impact"><strong>$5</strong><span>from every item purchased supports philanthropic initiatives benefiting Phoenix Children’s.</span></div>
+  </div>
+
+  <div class="oup-editorial__trust" aria-label="One Under Par benefits">
+    <div><strong>Premium golf headwear</strong><span>Distinctive design and course-ready comfort</span></div>
+    <div><strong>Family-owned</strong><span>Built around golf, community, and purpose</span></div>
+    <div><strong>Every product creates impact</strong><span>$5 from every item purchased supports philanthropy</span></div>
+    <div><strong>Free shipping over $100</strong><span>Plus straightforward domestic returns</span></div>
+  </div>
+
+  <div class="oup-editorial__story">
+    <div class="oup-editorial__story-copy">
+      <p class="oup-editorial__eyebrow">BELONG TO SOMETHING BETTER</p>
+      <h2>Golf gives us more than a scorecard.</h2>
+      <p>It gives us friendships, stories, lessons, and another chance to get better. One Under Par was created for golfers who appreciate the traditions of the game while bringing their own personality to it.</p>
+      <p>We make hats people want to wear—and build a community people are proud to join.</p>
+      <a href="/pages/about-us">Meet One Under Par →</a>
+    </div>
+    <figure class="oup-editorial__story-image">
+      {%- if section.settings.story_image != blank -%}
+        {{ section.settings.story_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1500, 1800',
+            sizes: '(min-width: 1000px) 50vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.story_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </figure>
+  </div>
+
+  <div class="oup-editorial__gallery" aria-label="One Under Par lifestyle">
+    <figure class="oup-editorial__gallery-main">
+      {%- if section.settings.community_image != blank -%}
+        {{ section.settings.community_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1500, 1800',
+            sizes: '(min-width: 1000px) 55vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.community_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+      <figcaption><span>Made for the round</span><strong>Designed to live well beyond it.</strong></figcaption>
+    </figure>
+    <div class="oup-editorial__gallery-copy">
+      <p class="oup-editorial__eyebrow">RESPECT THE GAME. KEEP YOUR PERSONALITY.</p>
+      <h2>Headwear with a point of view.</h2>
+      <p>Modern construction meets vintage golf character. Each design is intended to feel collected, not generic—and comfortable enough to become the hat you reach for first.</p>
+      <ul>
+        <li>Distinctive embroidery and patch work</li>
+        <li>Multiple profiles for a better personal fit</li>
+        <li>Performance and lifestyle options</li>
+        <li>Purpose built into every purchase</li>
+      </ul>
+      <a class="oup-editorial__button oup-editorial__button--dark" href="#find-your-fit">Find your fit</a>
+    </div>
+    <figure class="oup-editorial__gallery-detail">
+      {%- if section.settings.detail_image != blank -%}
+        {{ section.settings.detail_image
+          | image_url: width: 1600
+          | image_tag:
+            widths: '480, 720, 960, 1200, 1600',
+            sizes: '(min-width: 1000px) 45vw, 100vw',
+            loading: 'lazy',
+            alt: section.settings.detail_image_alt
+        }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </figure>
+  </div>
+
+  <div class="oup-editorial__join">
+    <p class="oup-editorial__eyebrow">THE ONE UNDER PAR COMMUNITY</p>
+    <h2>Progress, not perfection.</h2>
+    <p>Wear the brand. Respect the game. Help create impact. Then come back tomorrow and take another shot.</p>
+    <a href="{{ routes.all_products_collection_url }}">Choose your hat →</a>
+  </div>
+</section>
+
+<style>
+  .oup-home>.oup-hero,.oup-home>.oup-trustbar{display:none!important}
+  .oup-editorial{--wine:#8f1425;--ink:#181818;--cream:#f4efe5;--sand:#ded0b5;color:var(--ink);background:#fff}.oup-editorial *{box-sizing:border-box}.oup-editorial__hero{position:relative;min-height:min(860px,88vh);display:flex;align-items:flex-end;overflow:hidden;color:#fff}.oup-editorial__hero-image,.oup-editorial__shade{position:absolute;inset:0;width:100%;height:100%}.oup-editorial__hero-image{object-fit:cover;object-position:center}.oup-editorial__shade{background:linear-gradient(90deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,.45) 48%,rgba(10,10,10,.12) 78%),linear-gradient(0deg,rgba(10,10,10,.56),transparent 55%)}.oup-editorial__hero-copy{position:relative;z-index:2;width:min(780px,90%);padding:110px 6vw 90px}.oup-editorial__eyebrow{margin:0 0 17px;font-size:12px;font-weight:850;letter-spacing:.2em}.oup-editorial h1,.oup-editorial h2{margin:0;letter-spacing:-.045em;line-height:.98}.oup-editorial h1{font-size:clamp(48px,7vw,96px)}.oup-editorial h2{font-size:clamp(36px,4.7vw,68px)}.oup-editorial__hero-copy>p:not(.oup-editorial__eyebrow){max-width:660px;margin:28px 0 34px;font-size:clamp(18px,1.6vw,22px);line-height:1.55}.oup-editorial__actions{display:flex;gap:12px;flex-wrap:wrap}.oup-editorial__button{display:inline-flex;min-height:54px;padding:15px 25px;align-items:center;justify-content:center;font-size:14px;font-weight:850;letter-spacing:.035em;text-decoration:none!important;border:1px solid currentColor;transition:transform .2s,opacity .2s}.oup-editorial__button:hover{transform:translateY(-2px);opacity:.92}.oup-editorial__button--solid{color:#171717!important;background:#fff;border-color:#fff}.oup-editorial__button--outline{color:#fff!important;background:transparent}.oup-editorial__button--dark{color:#fff!important;background:var(--ink);border-color:var(--ink)}.oup-editorial__impact{position:absolute;z-index:2;right:4vw;bottom:35px;width:min(310px,38vw);padding:22px 24px;background:var(--wine);display:flex;align-items:center;gap:15px}.oup-editorial__impact strong{font-size:38px;line-height:1}.oup-editorial__impact span{font-size:11px;line-height:1.4}.oup-editorial__trust{display:grid;grid-template-columns:repeat(4,1fr);background:var(--wine);color:#fff}.oup-editorial__trust div{padding:25px 3.2vw;border-right:1px solid rgba(255,255,255,.24)}.oup-editorial__trust div:last-child{border-right:0}.oup-editorial__trust strong,.oup-editorial__trust span{display:block}.oup-editorial__trust strong{font-size:14px}.oup-editorial__trust span{margin-top:5px;font-size:11px;line-height:1.45;opacity:.8}.oup-editorial__story{max-width:1500px;margin:auto;padding:110px 5vw;display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:center}.oup-editorial__story-copy>p:not(.oup-editorial__eyebrow){font-size:19px;line-height:1.7}.oup-editorial__story-copy a,.oup-editorial__join a{display:inline-block;margin-top:12px;color:inherit;font-weight:850;text-decoration:none;border-bottom:1px solid}.oup-editorial__story-image{margin:0;min-height:650px;overflow:hidden}.oup-editorial__story-image img{width:100%;height:100%;min-height:650px;object-fit:cover}.oup-editorial__gallery{display:grid;grid-template-columns:1.12fr .88fr;background:var(--cream)}.oup-editorial__gallery figure{margin:0;overflow:hidden}.oup-editorial__gallery img{width:100%;height:100%;display:block;object-fit:cover}.oup-editorial__gallery-main{position:relative;grid-row:span 2;min-height:880px}.oup-editorial__gallery-main figcaption{position:absolute;left:28px;bottom:28px;padding:19px 22px;background:#fff}.oup-editorial__gallery-main figcaption span,.oup-editorial__gallery-main figcaption strong{display:block}.oup-editorial__gallery-main figcaption span{font-size:11px;letter-spacing:.12em;text-transform:uppercase}.oup-editorial__gallery-main figcaption strong{margin-top:4px;font-size:18px}.oup-editorial__gallery-copy{padding:80px 6vw}.oup-editorial__gallery-copy>p:not(.oup-editorial__eyebrow){font-size:18px;line-height:1.65}.oup-editorial__gallery-copy ul{padding-left:20px;margin:25px 0 32px}.oup-editorial__gallery-copy li{margin:9px 0}.oup-editorial__gallery-detail{height:410px}.oup-editorial__join{text-align:center;padding:110px 5vw;background:var(--ink);color:#fff}.oup-editorial__join h2{max-width:900px;margin:auto}.oup-editorial__join>p:not(.oup-editorial__eyebrow){max-width:700px;margin:24px auto;font-size:19px}.oup-editorial__join a{color:#fff}
+  @media(max-width:1000px){.oup-editorial__hero{min-height:760px}.oup-editorial__impact{right:20px;bottom:20px;width:280px}.oup-editorial__trust{grid-template-columns:repeat(2,1fr)}.oup-editorial__story{grid-template-columns:1fr;gap:45px}.oup-editorial__story-image,.oup-editorial__story-image img{min-height:520px}.oup-editorial__gallery{grid-template-columns:1fr}.oup-editorial__gallery-main{grid-row:auto;min-height:650px}.oup-editorial__gallery-detail{height:520px}}
+  @media(max-width:620px){.oup-editorial__hero{min-height:720px;align-items:flex-end}.oup-editorial__hero-image{object-position:62% center}.oup-editorial__shade{background:linear-gradient(0deg,rgba(8,8,8,.9) 0%,rgba(8,8,8,.55) 58%,rgba(8,8,8,.15) 100%)}.oup-editorial__hero-copy{width:100%;padding:75px 20px 150px}.oup-editorial h1{font-size:48px}.oup-editorial__hero-copy>p:not(.oup-editorial__eyebrow){font-size:17px}.oup-editorial__actions{display:grid}.oup-editorial__impact{left:20px;right:20px;bottom:20px;width:auto;padding:16px 18px}.oup-editorial__impact strong{font-size:32px}.oup-editorial__trust{grid-template-columns:1fr}.oup-editorial__trust div{border-right:0;border-bottom:1px solid rgba(255,255,255,.24);padding:20px}.oup-editorial__story{padding:75px 20px}.oup-editorial__story-image,.oup-editorial__story-image img{min-height:430px}.oup-editorial__gallery-main{min-height:520px}.oup-editorial__gallery-copy{padding:65px 20px}.oup-editorial__gallery-detail{height:420px}.oup-editorial__join{padding:80px 20px}}
+</style>
+
+{% schema %}
+{
+  "name": "OUP editorial intro",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Editorial imagery"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload brand-approved images to Shopify so responsive image sizes and stable dimensions are generated."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero image alt text",
+      "default": "One Under Par golfer on the course"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story image"
+    },
+    {
+      "type": "text",
+      "id": "story_image_alt",
+      "label": "Story image alt text",
+      "default": "Golfers sharing an authentic day on the course"
+    },
+    {
+      "type": "image_picker",
+      "id": "community_image",
+      "label": "Community image"
+    },
+    {
+      "type": "text",
+      "id": "community_image_alt",
+      "label": "Community image alt text",
+      "default": "One Under Par golf hat worn in a lifestyle setting"
+    },
+    {
+      "type": "image_picker",
+      "id": "detail_image",
+      "label": "Detail image"
+    },
+    {
+      "type": "text",
+      "id": "detail_image_alt",
+      "label": "Detail image alt text",
+      "default": "Close lifestyle view of a One Under Par golf hat"
+    }
+  ],
+  "presets": [{"name": "OUP editorial intro"}]
+}
+{% endschema %}

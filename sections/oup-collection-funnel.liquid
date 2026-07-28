@@ -1,0 +1,50 @@
+{% liquid
+  assign coll_handle = collection.handle | downcase
+  assign eyebrow = 'FIND YOUR ONE'
+  assign headline = 'Choose the hat that fits your game.'
+  assign intro = 'Start with the way you want it to feel, then narrow by profile, structure, color, and personality.'
+  assign primary_label = 'Shop every hat'
+  assign primary_url = routes.all_products_collection_url
+
+  if coll_handle contains 'ladies' or coll_handle contains 'women'
+    assign eyebrow = 'DESIGNED WITH HER IN MIND'
+    assign headline = 'Golf-first style without the generic fit.'
+    assign intro = 'Explore thoughtful proportions, confident color, and designs that belong on the course—not merely beside it.'
+    assign primary_label = 'Shop women’s hats'
+    assign primary_url = collection.url
+  elsif coll_handle contains 'performance'
+    assign eyebrow = 'BUILT FOR THE ROUND'
+    assign headline = 'Lightweight comfort when the day gets long.'
+    assign intro = 'Prioritize breathability, dependable structure, and low-weight construction for warm-weather rounds and active play.'
+    assign primary_label = 'Shop performance hats'
+    assign primary_url = collection.url
+  endif
+%}
+
+<section class="oup-collection-funnel" aria-label="Collection shopping guide">
+  <div class="ocf-hero">
+    <p>{{ eyebrow }}</p>
+    <h2>{{ headline }}</h2>
+    <span>{{ intro }}</span>
+    <div class="ocf-actions"><a class="ocf-btn" href="{{ primary_url }}">{{ primary_label }}</a><a class="ocf-link" href="#ocf-fit-guide">Choose by fit ↓</a></div>
+  </div>
+
+  <div class="ocf-paths" id="ocf-fit-guide">
+    <a href="/collections/unstructured-dad-hats"><span>01</span><h3>Relaxed</h3><p>Low-profile and unstructured shapes that sit closer to the head and soften naturally with wear.</p><b>Shop relaxed fits →</b></a>
+    <a href="/collections/5-panel-hats"><span>02</span><h3>Classic</h3><p>Balanced crown height and familiar golf proportions—the versatile middle ground for most golfers.</p><b>Shop classic fits →</b></a>
+    <a href="/collections/performance-hats"><span>03</span><h3>Performance</h3><p>Lightweight and breathable construction for heat, travel, practice sessions, and long rounds.</p><b>Shop performance →</b></a>
+    <a href="/collections/path-hats"><span>04</span><h3>Statement</h3><p>Patch, rope, phrase, and emblem designs for golfers who want the hat to carry more personality.</p><b>Shop statement styles →</b></a>
+  </div>
+
+  <div class="ocf-purpose">
+    <div><p>MORE THAN MERCHANDISE</p><h2>Every product creates impact.</h2></div>
+    <div><p>$5 from every item purchased supports One Under Par’s philanthropic initiatives benefiting Phoenix Children’s.</p><a href="/pages/philanthropy">See our commitment →</a></div>
+  </div>
+
+  <div class="ocf-benefits"><div><b>Free shipping</b><span>Domestic orders over $100</span></div><div><b>Return information</b><span>See the current policy before purchase</span></div><div><b>Secure checkout</b><span>Shopify-powered transaction protection</span></div><div><b>Purpose included</b><span>$5 from every item purchased</span></div></div>
+</section>
+
+<style>
+.oup-collection-funnel{--wine:#8f1425;--ink:#181818;--cream:#f4efe5;margin-top:85px;color:var(--ink)}.ocf-hero{max-width:1050px;margin:auto;text-align:center;padding:95px 25px}.ocf-hero>p,.ocf-purpose>div:first-child>p{margin:0;font-size:12px;font-weight:850;letter-spacing:.18em}.ocf-hero h2,.ocf-purpose h2{font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-.04em;margin:18px 0}.ocf-hero>span{display:block;max-width:780px;margin:auto;font-size:19px;line-height:1.65}.ocf-actions{display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;margin-top:34px}.ocf-btn{display:inline-flex;min-height:52px;align-items:center;padding:14px 24px;background:var(--ink);color:#fff!important;font-size:13px;font-weight:850;text-decoration:none!important}.ocf-link{color:inherit!important;font-weight:850;text-decoration:none!important;border-bottom:1px solid}.ocf-paths{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--ink)}.ocf-paths>a{min-height:330px;padding:30px;display:flex;flex-direction:column;color:inherit!important;text-decoration:none!important;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transition:.2s}.ocf-paths>a:hover{background:var(--cream);transform:translateY(-4px)}.ocf-paths span{font-size:12px;font-weight:850;letter-spacing:.12em}.ocf-paths h3{font-size:24px;margin:auto 0 12px}.ocf-paths p{margin:0 0 20px;line-height:1.55}.ocf-paths b{font-size:12px}.ocf-purpose{display:grid;grid-template-columns:1fr 1fr;gap:8vw;padding:95px 7vw;background:var(--cream);align-items:center}.ocf-purpose>div:last-child>p{font-size:19px;line-height:1.65}.ocf-purpose a{display:inline-block;margin-top:10px;color:inherit;font-weight:850;text-decoration:none;border-bottom:1px solid}.ocf-benefits{display:grid;grid-template-columns:repeat(4,1fr);background:var(--wine);color:#fff}.ocf-benefits>div{padding:24px 3.5vw;border-right:1px solid rgba(255,255,255,.28)}.ocf-benefits>div:last-child{border-right:0}.ocf-benefits b,.ocf-benefits span{display:block}.ocf-benefits b{font-size:14px}.ocf-benefits span{font-size:11px;opacity:.8;margin-top:4px}@media(max-width:900px){.ocf-paths,.ocf-benefits{grid-template-columns:repeat(2,1fr)}.ocf-purpose{grid-template-columns:1fr;gap:25px}}@media(max-width:600px){.ocf-hero{padding:70px 20px}.ocf-paths,.ocf-benefits{grid-template-columns:1fr}.ocf-paths>a{min-height:260px}.ocf-purpose{padding:70px 20px}.ocf-benefits>div{border-right:0;border-bottom:1px solid rgba(255,255,255,.28)}}
+</style>
+{% schema %}{"name":"OUP collection funnel","settings":[],"presets":[{"name":"OUP collection funnel"}]}{% endschema %}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "editorial_intro": {
+      "type": "oup-editorial-intro",
+      "settings": {}
+    },
+    "shop_collections": {
+      "type": "oup-shop-collections",
+      "settings": {}
+    }
+  },
+  "order": ["editorial_intro", "shop_collections"]
+}
