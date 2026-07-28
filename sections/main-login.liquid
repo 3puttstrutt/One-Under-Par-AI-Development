@@ -36,7 +36,7 @@
           <div class="text-over-input">
             <input type="password" value="" name="customer[password]" id="customer_password" class="large password" size="16" />
             <div id="forgot_password" class="text-over-input__text">
-              <a class="underline" href="#" onclick="showRecoverPasswordForm();return false;">{{ 'customer.login.forgot_password' | t }}</a>
+              <button type="button" class="underline link-button-reset" onclick="showRecoverPasswordForm();">{{ 'customer.login.forgot_password' | t }}</button>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
 
         <div class="lightly-spaced-row-above">
           <p>{{ 'customer.recover_password.success' | t }}</p>
-          <span class="note"><a class="underline" href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.login.sign_in' | t }}</a></span>
+          <span class="note"><button type="button" class="underline link-button-reset" onclick="hideRecoverPasswordForm();">{{ 'customer.login.sign_in' | t }}</button></span>
         </div>
 
         {% else %}
@@ -87,7 +87,7 @@
         <div class="lightly-spaced-row-above">
           <div class="opposing-items">
             <button class="btn" type="submit">{{ 'customer.recover_password.submit' | t }}</button>
-            <a class="underline" href="#" onclick="hideRecoverPasswordForm();return false;">{{ 'customer.recover_password.cancel' | t }}</a>
+            <button type="button" class="underline link-button-reset" onclick="hideRecoverPasswordForm();">{{ 'customer.recover_password.cancel' | t }}</button>
           </div>
         </div>
 

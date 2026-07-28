@@ -264,9 +264,9 @@
             <ul class="slider__grid">
               {% for i in (1..3) %}
                 <li class="slider__item{% if forloop.first %} is-active{% endif %}" data-media-id="{{ forloop.index }}">
-                  <a class="thumbnail thumbnail--media-image" href="#">
+                  <button type="button" class="thumbnail thumbnail--media-image" aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}">
                     <div class="placeholder-image">{{ 'product-' | append: i | placeholder_svg_tag }}</div>
-                  </a>
+                  </button>
                 </li>
               {% endfor %}
             </ul>
@@ -486,9 +486,9 @@
                     {% if block.settings.show_quantity_selector %}
                       <label class="label" for="quantity">{{ 'products.product.quantity' | t }}</label>
                       <quantity-wrapper class="buttoned-input">
-                        <a href="#" data-quantity="down" aria-label="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon-minus' %}</a>
-                        <input aria-label="{{ 'products.product.quantity' | t }}" id="quantity" type="number" name="quantity" value="1" />
-                        <a href="#" data-quantity="up" aria-label="{{ 'cart.items.increase_quantity' | t }}">{% render 'icon-plus' %}</a>
+                        <button type="button" data-quantity="down" aria-label="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon-minus' %}</button>
+                        <input aria-label="{{ 'products.product.quantity' | t }}" id="quantity" type="number" name="quantity" value="1" min="1" inputmode="numeric" />
+                        <button type="button" data-quantity="up" aria-label="{{ 'cart.items.increase_quantity' | t }}">{% render 'icon-plus' %}</button>
                       </quantity-wrapper>
                     {% endif %}
 

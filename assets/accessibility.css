@@ -14,6 +14,29 @@
 }
 
 :where(
+  .navigation__children-toggle,
+  .mobile-nav-back,
+  .mobile-navigation-drawer .mobile-nav-toggle,
+  .header-shade,
+  .close-detail
+) {
+  border: 0;
+  background: transparent;
+  font: inherit;
+}
+
+.link-button-reset {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+:where(
   .color-scheme-2,
   .oup-editorial__hero,
   .oup-impact,

@@ -1395,16 +1395,18 @@ input[type=date] {
   border: 1px var(--input-border-color-active) solid;
   box-shadow: 0 0 0 var(--input-active-shadow-width) var(--input-border-color-active);
 }
-.buttoned-input a {
+.buttoned-input :is(a, button) {
   display: flex;
   align-items: center;
   height: var(--buttoned-input-size);
   padding-inline-start: calc(var(--buttoned-input-size) / 3);
   padding-inline-end: calc(var(--buttoned-input-size) / 10);
+  border: 0;
+  background: transparent;
   color: inherit;
   font-size: var(--input-text-size);
 }
-.buttoned-input a:last-child {
+.buttoned-input :is(a, button):last-child {
   padding-inline-start: calc(var(--buttoned-input-size) / 10);
   padding-inline-end: calc(var(--buttoned-input-size) / 3);
 }
@@ -4166,6 +4168,7 @@ shopify-accelerated-checkout[disabled],
   display: inline-block;
   width: 69px;
   padding: 4px;
+  border: 0;
   background: var(--product-block-blend-bg, #fff);
 }
 .gallery-viewer__thumb[hidden] {
@@ -4472,15 +4475,15 @@ shopify-accelerated-checkout[disabled],
     padding-inline-end: var(--column-gutter);
     text-align: center;
   }
-  .cart-form .buttoned-input a,
+  .cart-form .buttoned-input :is(a, button),
   .cart-form .buttoned-input input {
     height: 2.4em;
   }
-  .cart-form .buttoned-input a {
+  .cart-form .buttoned-input :is(a, button) {
     padding: 0 5px;
     padding-inline-start: 10px;
   }
-  .cart-form .buttoned-input a:last-child {
+  .cart-form .buttoned-input :is(a, button):last-child {
     padding-inline-start: 5px;
     padding-inline-end: 10px;
   }
@@ -7790,6 +7793,10 @@ variant-picker.variant-picker--pre-last-selection.variant-picker--product-availa
 .thumbnails .thumbnail {
   display: block;
   position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
 }
 .thumbnails .thumbnail::after {
   content: "";

@@ -80,7 +80,7 @@
 
   {% if settings.quickbuy_style != 'off' and section.settings.enable_carousel %}
     <div class="quickbuy-container use-color-scheme use-color-scheme--{{ settings.quickbuy_color_scheme }} js-quickbuy">
-      <a href="#" class="close-detail" aria-label="{{ 'accessibility.close' | t }}" tabindex="-1" aria-hidden="true">{% render 'icon-close', stroke_width: 1 %}</a>
+      <button type="button" class="close-detail" aria-label="{{ 'accessibility.close' | t }}" tabindex="-1" aria-hidden="true">{% render 'icon-close', stroke_width: 1 %}</button>
       <div class="inner"></div>
     </div>
   {% endif %}

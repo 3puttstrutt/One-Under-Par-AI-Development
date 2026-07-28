@@ -40,7 +40,7 @@
         "logo": "shopify://shop_images/redman_emblem_2026_72dpi_digital.png",
         "logo_img_width_int": 100,
         "mobile_logo_img_width_int": 70,
-        "logo_h1": true,
+        "logo_h1": false,
         "enable_sticky": true,
         "enable_transparent": false,
         "transparent_logo": "",

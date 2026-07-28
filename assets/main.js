@@ -2096,6 +2096,7 @@ const MainNavigation = class extends HTMLElement {
 
       // set text in header
       delEl.parentElement.classList.add('navigation__item--open');
+      delEl.setAttribute('aria-expanded', 'true');
       this.mobileDrawer.classList.add('mobile-navigation-drawer--child-open');
       this.mobileDrawer.querySelector('.mobile-nav-title').innerText = delEl.previousElementSibling.innerText;
 
@@ -2124,6 +2125,7 @@ const MainNavigation = class extends HTMLElement {
       this.mobileDrawer.classList.remove('mobile-navigation-drawer--child-open');
       this.mobileDrawer.querySelectorAll('.navigation__tier-1 > .navigation__item--open').forEach((el) => {
         el.classList.remove('navigation__item--open');
+        el.querySelector('.navigation__children-toggle')?.setAttribute('aria-expanded', 'false');
       });
     });
 
@@ -2134,9 +2136,11 @@ const MainNavigation = class extends HTMLElement {
 
       if (doOpen) {
         delEl.parentElement.classList.add('navigation__item--open');
+        delEl.setAttribute('aria-expanded', 'true');
         delEl.nextElementSibling.style.height = `${delEl.nextElementSibling.firstElementChild.clientHeight}px`;
       } else {
         delEl.parentElement.classList.remove('navigation__item--open');
+        delEl.setAttribute('aria-expanded', 'false');
         delEl.nextElementSibling.style.height = '';
       }
     });
@@ -4073,8 +4077,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.classList.contains('enable-mobile-nav-transition')) {
       // hide nav
       document.body.classList.remove('reveal-mobile-nav', 'reveal-mobile-nav--revealed');
+      document.querySelector('.logo-area .mobile-nav-toggle')?.setAttribute('aria-expanded', 'false');
       setTimeout(() => {
         document.body.classList.remove('enable-mobile-nav-transition');
+        document.querySelector('.logo-area .mobile-nav-toggle')?.focus();
       }, 750);
     } else {
       // show nav
@@ -4084,8 +4090,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   theme.openMobileNav = () => {
     document.body.classList.add('enable-mobile-nav-transition');
+    document.querySelector('.logo-area .mobile-nav-toggle')?.setAttribute('aria-expanded', 'true');
     setTimeout(() => {
       document.body.classList.add('reveal-mobile-nav');
+      document.querySelector('.mobile-navigation-drawer .mobile-nav-toggle')?.focus();
 
       // after reveal, add class
       const cs = getComputedStyle(document.querySelector('.mobile-navigation-drawer .navigation__tier-1 > .navigation__item > .navigation__link'));

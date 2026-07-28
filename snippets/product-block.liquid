@@ -144,8 +144,8 @@ Parameters:
             </div>
           </a>
           {%- if show_hover_image -%}
-            <a class="image-page-button image-page-button--previous has-ltr-icon" href="#" aria-label="{{ 'general.slider.previous' | t | escape }}" tabindex="-1">{%- render 'icon-chevron-left', stroke_width: 1.3 -%}</a>
-            <a class="image-page-button image-page-button--next has-ltr-icon" href="#" aria-label="{{ 'general.slider.next' | t | escape }}" tabindex="-1">{%- render 'icon-chevron-right', stroke_width: 1.3 -%}</a>
+            <button type="button" class="image-page-button image-page-button--previous has-ltr-icon" aria-label="{{ 'general.slider.previous' | t | escape }}">{%- render 'icon-chevron-left', stroke_width: 1.3 -%}</button>
+            <button type="button" class="image-page-button image-page-button--next has-ltr-icon" aria-label="{{ 'general.slider.next' | t | escape }}">{%- render 'icon-chevron-right', stroke_width: 1.3 -%}</button>
           {%- endif -%}
 
           {%- if settings.quickbuy_style == 'button' -%}
@@ -311,7 +311,7 @@ Parameters:
   {%- if settings.quickbuy_style != 'off' -%}
     {%- unless no_quick_buy_markup or no_quick_buy -%}
       <div class="quickbuy-container use-color-scheme use-color-scheme--{{ settings.quickbuy_color_scheme }} js-quickbuy">
-        <a href="#" class="close-detail" aria-label="{{ 'accessibility.close' | t }}" tabindex="-1" aria-hidden="true">{% render 'icon-close', stroke_width: 1 %}</a>
+        <button type="button" class="close-detail" aria-label="{{ 'accessibility.close' | t }}" tabindex="-1" aria-hidden="true">{% render 'icon-close', stroke_width: 1 %}</button>
         <div class="inner"></div>
       </div>
     {%- endunless -%}

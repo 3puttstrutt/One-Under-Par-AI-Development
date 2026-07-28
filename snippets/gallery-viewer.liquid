@@ -18,20 +18,20 @@
           <div class="gallery-viewer__zoom-container"></div>
           <div class="gallery-viewer__thumbs">
             {%- for media in image_media -%}
-              <a class="gallery-viewer__thumb" href="#" data-zoom-url="{{ media.preview_image | image_url: width: zoom_size }}" data-media-id="{{ media.id }}">
+              <button type="button" class="gallery-viewer__thumb" aria-label="{{ 'products.product.media.load_image' | t: index: forloop.index }}" data-zoom-url="{{ media.preview_image | image_url: width: zoom_size }}" data-media-id="{{ media.id }}">
                 {{- media.preview_image | image_url: width: 138 | image_tag: class: 'gallery-viewer__thumb-img' -}}
-              </a>
+              </button>
             {%- endfor -%}
           </div>
           <div class="gallery-viewer__controls">
-            <a class="gallery-viewer__button gallery-viewer__prev has-ltr-icon" href="#">
+            <button type="button" class="gallery-viewer__button gallery-viewer__prev has-ltr-icon">
               <span class="visually-hidden">{{ 'general.slider.previous' | t }}</span>
               {% render 'icon-chevron-left' %}
-            </a>
-            <a class="gallery-viewer__button gallery-viewer__next has-ltr-icon" href="#">
+            </button>
+            <button type="button" class="gallery-viewer__button gallery-viewer__next has-ltr-icon">
               <span class="visually-hidden">{{ 'general.slider.next' | t }}</span>
               {% render 'icon-chevron-right' %}
-            </a>
+            </button>
 
             <button type="button" class="gallery-viewer__button gallery-viewer__close js-close-modal">
               {% render 'icon-close' %}

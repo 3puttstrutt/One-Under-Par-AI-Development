@@ -76,7 +76,7 @@
           <p>
             <button class="btn" type="submit">{{ 'customer.addresses.add' | t }}</button>
           </p>
-          <span class="note"><a href="#" class="js-cancel underline">{{ 'customer.addresses.cancel' | t }}</a></span>
+          <span class="note"><button type="button" class="js-cancel underline link-button-reset">{{ 'customer.addresses.cancel' | t }}</button></span>
         </div>
       {% endform %}
     </div>
@@ -98,21 +98,21 @@
             <div class="address-phone">{{ address.phone }}</div>
           </div>
           <p class="address-actions">
-            <a href="#"
-              class="address-edit-toggle js-edit-address underline"
+            <button type="button"
+              class="address-edit-toggle js-edit-address underline link-button-reset"
               data-form-id="{{ address.id }}"
               aria-owns="edit_address_{{ address.id }}"
               aria-expanded="false"
             >
               {{- 'customer.addresses.edit' | t -}}
-            </a>
-            <a href="#"
-              class="address-delete js-delete-address underline"
+            </button>
+            <button type="button"
+              class="address-delete js-delete-address underline link-button-reset"
               data-target="{{ address.url }}"
               data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
             >
               {{- 'customer.addresses.delete' | t -}}
-            </a>
+            </button>
           </p>
         </div>
         <div id="edit_address_{{ address.id }}" class="customer_address account-form edit_address small-form hidden">
@@ -180,7 +180,7 @@
               </div>
             <div class="lightly-spaced-row-above">
               <p><button class="btn" type="submit">{{ 'customer.addresses.update' | t }}</button></p>
-              <p><span class="note"><a href="#" class="js-cancel underline">{{ 'customer.addresses.cancel' | t }}</a></span></p>
+              <p><span class="note"><button type="button" class="js-cancel underline link-button-reset">{{ 'customer.addresses.cancel' | t }}</button></span></p>
             </div>
           {% endform %}
         </div>
