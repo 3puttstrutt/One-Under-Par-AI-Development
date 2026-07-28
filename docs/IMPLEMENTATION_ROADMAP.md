@@ -16,13 +16,16 @@ This roadmap covers work remaining after the foundation fixes on `agent/one-unde
 - Make Organization structured data store-driven and remove duplicate breadcrumb schema.
 - Remove unsupported generated claims and duplicate conversion sections from active templates.
 - Replace missing homepage assets with responsive Shopify image settings and placeholders.
+- Replace mobile-navigation and product-card action links with semantic controls, synchronize drawer state/focus, and remove duplicate responsive-gallery IDs.
+- Confirm the target Shopify theme is unpublished and conduct an initial rendered mobile preview audit.
 
 ### Remaining before feature work
 
 - Install a current Ruby/Shopify CLI toolchain and run Theme Check.
-- Render the theme in the named Shopify development theme.
+- Sync the reviewed branch files to the named unpublished Shopify development theme and re-test.
 - Run keyboard, VoiceOver, axe, 200%/400% zoom, reflow, and touch-target tests.
 - Establish mobile Lighthouse baselines for home, collection, product, search, and cart.
+- Correct the literal Terms placeholders, duplicate contact-policy block, and shipping-market conflict after merchant/legal approval.
 - Confirm whether PageFly is still used; remove its layouts/assets only after dependency review.
 - Consolidate active custom inline CSS into versioned assets.
 
@@ -51,6 +54,7 @@ Exit criteria: all product claims are data-backed and merchant-approved; search/
 - Refine homepage hierarchy using one hero, one collection-discovery path, proof backed by real data, and one email-capture moment.
 - Build distinct footer navigation for shopping, support, company, and legal destinations.
 - Confirm social profiles, share images, favicon, store description, and organization details.
+- Approve and configure the Klaviyo first-order offer, consent copy, timing, and frequency cap.
 - Decide whether supported markets require country/language selectors.
 - Remove deprecated custom sections after merchant sign-off and version history confirmation.
 
