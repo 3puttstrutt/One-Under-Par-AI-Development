@@ -113,7 +113,12 @@
 
       <div class="filters-adjacent collection-listing" data-ajax-container>
         {% if search.results == empty %}
-          <p class="align-centre fully-spaced-row" role="status">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+          <div class="align-centre fully-spaced-row">
+            <p role="status">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+            <a class="btn btn--primary" href="{{ routes.all_products_collection_url }}">
+              {{- 'cart.summary.continue_shopping' | t -}}
+            </a>
+          </div>
         {% else %}
           <div class="product-grid product-grid--per-row-{{ section.settings.grid }} product-grid--per-row-mob-{{ settings.prod_thumb_mob_per_row }}">
             {%- liquid
