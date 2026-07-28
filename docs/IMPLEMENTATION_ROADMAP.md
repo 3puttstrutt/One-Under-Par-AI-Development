@@ -18,11 +18,11 @@ This roadmap covers work remaining after the foundation fixes on `agent/one-unde
 - Replace missing homepage assets with responsive Shopify image settings and placeholders.
 - Replace mobile-navigation and product-card action links with semantic controls, synchronize drawer state/focus, and remove duplicate responsive-gallery IDs.
 - Confirm the target Shopify theme is unpublished and conduct an initial rendered mobile preview audit.
+- Sync the reviewed files to the unpublished **One Under Par – AI Development** theme and complete post-sync checks for home, collection, PDP, search, cart, mobile navigation, and 404 flows.
 
 ### Remaining before feature work
 
 - Install a current Ruby/Shopify CLI toolchain and run Theme Check.
-- Sync the reviewed branch files to the named unpublished Shopify development theme and re-test.
 - Run keyboard, VoiceOver, axe, 200%/400% zoom, reflow, and touch-target tests.
 - Establish mobile Lighthouse baselines for home, collection, product, search, and cart.
 - Correct the literal Terms placeholders, duplicate contact-policy block, and shipping-market conflict after merchant/legal approval.
@@ -72,7 +72,7 @@ Exit criteria: all brand/policy content is approved; no hard-coded unsupported c
 - Audit Customer Events pixels, consent behavior, and duplicate analytics/purchase events.
 - Test Klaviyo, Loox, Notify Me, Search & Discovery, dynamic checkout, policies, discounts, gift cards, localization, and error states.
 - Complete stakeholder UAT on the development theme and document rollback steps.
-- Only after explicit merchant approval: deploy the reviewed commit to the development theme, re-test, then schedule a separate production publication action.
+- Keep subsequent changes on the development theme and re-test them there; only after explicit merchant approval should a separate production publication action be scheduled.
 
 Exit criteria: zero Critical/High launch blockers; merchant UAT approval; documented performance/accessibility results; confirmed analytics; rollback plan; explicit authorization for any production action.
 
