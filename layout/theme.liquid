@@ -46,11 +46,11 @@
   {%- endif -%}
 
   {%- unless base_font.system? -%}
-    <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
+    {{ base_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   {%- endunless -%}
 
   {%- unless heading_font.system? -%}
-    <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+    {{ heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   {%- endunless -%}
 
   <script>
@@ -170,7 +170,6 @@
     {{- settings.custom_html_head -}}
     <!-- CC Custom Head End -->
   {%- endif -%}
-  {% include 'pagefly-app-header' %}
   {{ 'accessibility.css' | asset_url | stylesheet_tag }}
 </head>
 

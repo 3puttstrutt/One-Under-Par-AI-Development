@@ -19,21 +19,25 @@ This roadmap covers work remaining after the foundation fixes on `agent/one-unde
 - Replace mobile-navigation and product-card action links with semantic controls, synchronize drawer state/focus, and remove duplicate responsive-gallery IDs.
 - Confirm the target Shopify theme is unpublished and conduct an initial rendered mobile preview audit.
 - Sync the reviewed files to the unpublished **One Under Par – AI Development** theme and complete post-sync checks for home, collection, PDP, search, cart, mobile navigation, and 404 flows.
+- Run Shopify CLI 4.5.2 Theme Check and reduce the result from 1 error/47 warnings to 0 errors/7 documented warnings.
+- Confirm no page, product, collection, blog, or article uses a PageFly template; remove active PageFly loading, and stage dormant PageFly files for deletion in Git. The Shopify connector blocked remote file deletion, so its unpublished-theme orphans await GitHub sync/admin cleanup.
+- Repair malformed gallery nesting, account-address output, legacy font preloads, and additional Liquid initialization issues.
+- Repair the duplicate custom Terms page's Refund and Privacy links.
+- Replace hard-coded SEO fallbacks containing unapproved premium and philanthropy claims with factual catalog language.
 
 ### Remaining before feature work
 
-- Install a current Ruby/Shopify CLI toolchain and run Theme Check.
 - Run keyboard, VoiceOver, axe, 200%/400% zoom, reflow, and touch-target tests.
 - Establish mobile Lighthouse baselines for home, collection, product, search, and cart.
-- Correct the literal Terms placeholders, duplicate contact-policy block, and shipping-market conflict after merchant/legal approval.
-- Confirm whether PageFly is still used; remove its layouts/assets only after dependency review.
+- Correct the three literal placeholders and drafting note in the canonical Terms policy; the connected app lacks `write_legal_policies`.
+- Reconcile shipping zones with the U.S.-only shipping policy. The active Market is U.S.-only, but 64 named countries plus rest of world still have zones.
 - Consolidate active custom inline CSS into versioned assets.
 
 Exit criteria: no Critical code defects; no serious automated accessibility findings; approved baseline performance measurements; all active templates render without console/Liquid errors.
 
 ## Phase 2: Conversion and merchandising
 
-- Create product metafield definitions for approved fit, profile, construction, materials, care, and merchandising copy.
+- Complete approved fit, profile, construction, materials, care, and merchandising metafields. Shopify category definitions now exist, including Cap fit type, but the current Cap fit type definition reports `SOME_INVALID`.
 - Build a merchant-controlled PDP details section that renders only populated metafields.
 - Create and assign an approved fit-guide page to the variant picker.
 - Validate sticky add-to-cart across variants, sold-out products, dynamic checkout, and mobile safe areas.

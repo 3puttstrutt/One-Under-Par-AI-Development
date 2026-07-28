@@ -4,21 +4,21 @@
   assign oup_description = page_description | strip_html | strip
 
   if request.page_type == 'index'
-    assign oup_title = 'Premium Golf Hats with Purpose | One Under Par'
-    assign oup_description = 'Shop premium vintage-inspired golf hats for men and women. Every item purchased generates a $5 philanthropic contribution.'
+    assign oup_title = 'Golf Hats and Headwear | One Under Par'
+    assign oup_description = 'Shop One Under Par golf hats and headwear, including performance, unstructured, five-panel, patch, flatbill, and women’s styles.'
   elsif request.page_type == 'product'
     if oup_description == blank
       assign oup_description = product.description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
     endif
     if oup_description == blank
-      assign oup_description = 'Shop ' | append: product.title | append: ' by One Under Par. Premium golf headwear with vintage character, modern comfort, and a $5 philanthropic contribution from every item.'
+      assign oup_description = 'Shop ' | append: product.title | append: ' by One Under Par. View product details, available options, and related golf headwear.'
     endif
   elsif request.page_type == 'collection'
     if oup_description == blank
       assign oup_description = collection.description | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 155
     endif
     if oup_description == blank
-      assign oup_description = 'Shop ' | append: collection.title | append: ' from One Under Par—premium golf hats with vintage style, modern comfort, and purpose behind every purchase.'
+      assign oup_description = 'Shop ' | append: collection.title | append: ' from One Under Par and explore related golf hats and headwear.'
     endif
   elsif request.page_type == 'article'
     if oup_description == blank
@@ -31,7 +31,7 @@
   endif
 
   if oup_description == blank
-    assign oup_description = 'One Under Par creates premium vintage-inspired golf hats with purpose. Every item purchased generates a $5 philanthropic contribution.'
+    assign oup_description = 'Explore golf hats, headwear, and collections from One Under Par.'
   endif
 -%}
 <meta charset="utf-8">

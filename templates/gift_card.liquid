@@ -46,11 +46,11 @@
   </style>
 
   {%- unless base_font.system? -%}
-    <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
+    {{ base_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   {%- endunless -%}
 
   {%- unless heading_font.system? -%}
-    <link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+    {{ heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
   {%- endunless -%}
 
   <link rel="stylesheet" href="{{ 'gift-card.css' | asset_url }}">

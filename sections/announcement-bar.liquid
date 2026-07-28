@@ -57,7 +57,8 @@
       </div>
 
       <div class="announcement-bar__middle">
-        {%- if section.blocks.size > 0 -%}
+{%- assign first_announcement_found = false -%}
+{%- if section.blocks.size > 0 -%}
           <div class="announcement-bar__announcements">
             {%- for block in section.blocks -%}
               {%- liquid

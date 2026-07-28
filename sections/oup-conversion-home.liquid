@@ -10,7 +10,7 @@
       <h1>Golf hats with character.<br>Built to become favorites.</h1>
       <p class="oup-hero__lead">Distinctive embroidery, considered fits, and course-ready comfort—designed for golfers who respect the game without taking themselves too seriously.</p>
       <div class="oup-actions">
-        <a class="oup-btn oup-btn--primary" href="/collections/all">Shop all hats</a>
+        <a class="oup-btn oup-btn--primary" href="{{ routes.all_products_collection_url }}">Shop all hats</a>
         <a class="oup-btn oup-btn--secondary" href="#find-your-fit">Find your fit</a>
       </div>
       <div class="oup-hero__proof" aria-label="Store benefits">
@@ -44,10 +44,10 @@
       <p>Skip the endless scrolling. Shop by the way you wear it.</p>
     </header>
     <div class="oup-paths">
-      <a href="/collections/mens-hats" class="oup-path"><span class="oup-path__num">01</span><h3>Classic golf</h3><p>Timeless silhouettes, curved bills, and elevated embroidery.</p><b>Shop classic styles →</b></a>
-      <a href="/collections/all" class="oup-path"><span class="oup-path__num">02</span><h3>Performance</h3><p>Lightweight, breathable options for warm rounds and long days.</p><b>Shop performance hats →</b></a>
-      <a href="/collections/all" class="oup-path"><span class="oup-path__num">03</span><h3>Statement pieces</h3><p>Patch, rope, and personality-forward designs that start conversations.</p><b>Shop statement hats →</b></a>
-      <a href="/collections/womens-hats" class="oup-path"><span class="oup-path__num">04</span><h3>For her</h3><p>Thoughtful proportions, confident color, and golf-first style.</p><b>Shop women’s hats →</b></a>
+      <a href="{{ routes.collections_url }}" class="oup-path"><span class="oup-path__num">01</span><h3>Classic golf</h3><p>Timeless silhouettes, curved bills, and elevated embroidery.</p><b>Shop classic styles →</b></a>
+      <a href="{{ routes.all_products_collection_url }}" class="oup-path"><span class="oup-path__num">02</span><h3>Performance</h3><p>Lightweight, breathable options for warm rounds and long days.</p><b>Shop performance hats →</b></a>
+      <a href="{{ routes.all_products_collection_url }}" class="oup-path"><span class="oup-path__num">03</span><h3>Statement pieces</h3><p>Patch, rope, and personality-forward designs that start conversations.</p><b>Shop statement hats →</b></a>
+      <a href="{{ routes.collections_url }}" class="oup-path"><span class="oup-path__num">04</span><h3>For her</h3><p>Thoughtful proportions, confident color, and golf-first style.</p><b>Shop women’s hats →</b></a>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
     <div class="oup-wrap">
       <header class="oup-section-head oup-section-head--row">
         <div><p class="oup-eyebrow">THE FIRST FOUR</p><h2>Start with a standout</h2></div>
-        <a href="/collections/all">View every hat →</a>
+        <a href="{{ routes.all_products_collection_url }}">View every hat →</a>
       </header>
       <div class="oup-products">
         {% for product_handle in featured_handles %}
@@ -102,13 +102,16 @@
         <div><strong>Structured</strong><p>A defined front panel and polished silhouette for logos and patches with more presence.</p></div>
         <div><strong>Unstructured</strong><p>Soft, casual, and easy to wear—ideal for vintage-inspired and everyday styles.</p></div>
       </div>
-      <div class="oup-center"><a class="oup-btn oup-btn--primary" href="/collections/all">Explore every fit</a></div>
+      <div class="oup-center"><a class="oup-btn oup-btn--primary" href="{{ routes.all_products_collection_url }}">Explore every fit</a></div>
     </div>
   </div>
 
   <div class="oup-impact">
     <div class="oup-impact__mark">
-      <img src="{{ 'Benefiting-Phoenix-Childrens_Color.png' | file_img_url: '600x' }}" alt="Benefiting Phoenix Children's" loading="lazy">
+      {%- assign impact_logo = images['Benefiting-Phoenix-Childrens_Color.png'] -%}
+      {%- if impact_logo != blank -%}
+        {{ impact_logo | image_url: width: 600 | image_tag: alt: "Benefiting Phoenix Children's", loading: 'lazy', widths: '300, 450, 600', sizes: '(min-width: 1000px) 40vw, 80vw' }}
+      {%- endif -%}
     </div>
     <div class="oup-impact__copy">
       <p class="oup-eyebrow">PHILANTHROPY FIRST</p>
@@ -155,7 +158,7 @@
   <div class="oup-final">
     <p class="oup-eyebrow">YOUR NEXT FAVORITE HAT IS HERE</p>
     <h2>Respect the game. Keep your personality.</h2>
-    <a class="oup-btn oup-btn--light" href="/collections/all">Shop One Under Par</a>
+    <a class="oup-btn oup-btn--light" href="{{ routes.all_products_collection_url }}">Shop One Under Par</a>
   </div>
 </section>
 
